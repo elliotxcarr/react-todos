@@ -18,6 +18,7 @@ export default function Home() {
     setCompleted(completed.filter(t => t != task));
     setTodos([...todos, task])
   }
+  
   const getData =  async () => {
     try{
       await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list')
@@ -32,7 +33,6 @@ export default function Home() {
     }
   }
 
-  getData();
   return (
     <div className="flex flex-row">
       <div className="font-sans flex flex-col h-screen gap-3 p-10 w-1/2">
