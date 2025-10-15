@@ -20,6 +20,7 @@ const CompletedToDos = ({
   ));
 
   const clearBtnClicked = () => {
+    if(completed.length === 0) return;
     if(confirm('Are you sure you want to clear completed tasks?')){
       emptyCompleted();
     }

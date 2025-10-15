@@ -1,8 +1,8 @@
 'use client'
-import ToDoList from "./todoList";
-import AddToDo from "./addToDo";
+import ToDoList from "./components/todoList";
+import AddToDo from "./components/addToDo";
 import { useState } from "react";
-import CompletedToDos from "./completedList";
+import CompletedToDos from "./components/completedList";
 
 export default function Home() {
   const [todos, setTodos] = useState([]);

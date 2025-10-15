@@ -5,9 +5,9 @@ const ToDoList = ({
   todoItems: string[];
   completeTodo: (task) => void;
 }) => {
-  const listItems = todoItems.map((item) => {
+  const listItems = todoItems.map((item, index) => {
     return (
-      <li className="text-xl p-1 w-full justify-between flex">
+      <li key={index} className="text-xl p-1 w-full justify-between flex">
         - {item}{' '}
         <button
           className="hover:cursor-pointer"
