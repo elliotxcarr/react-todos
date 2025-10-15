@@ -18,14 +18,16 @@ export default function Home() {
     setCompleted(completed.filter(t => t != task));
     setTodos([...todos, task])
   }
-  
+
+  const emptyCompleted = () => setCompleted([]);
+
   const getData =  async () => {
     try{
       await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list')
           .then(res => res.json()).then(data => {
             const meals = data.meals;
             const ingredients:string[] = meals.map(meal => meal.strIngredient);
-            setTodos(ingredients)
+            setTodos(ingredients);
           });
     }
     catch (error){
@@ -34,15 +36,18 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-row">
-      <div className="font-sans flex flex-col h-screen gap-3 p-10 w-1/2">
+    <div className="flex flex-col mx-25">
+      <div className="flex w-full justify-center my-10">
         <AddToDo addToDo={addTodo}/>
-        <ToDoList todoItems={todos} completeTodo={completeTodo} />
       </div>
-      <div className="flex flex-col w-1/2 p-10">
-        <CompletedToDos completed={completed} undoCompleted={undoCompleted}/>
+      <div className="flex p-5 justify-center max-w-screen gap-15 ">
+        <div className="flex flex-col outline-1 p-4">
+          <ToDoList todoItems={todos} completeTodo={completeTodo} />
+        </div>
+        <div className="flex flex-col outline-1 p-4">
+          <CompletedToDos completed={completed} undoCompleted={undoCompleted} emptyCompleted={emptyCompleted}/>
+        </div>
       </div>
     </div>
-    
   );
 }

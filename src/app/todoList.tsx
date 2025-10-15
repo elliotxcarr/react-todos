@@ -7,8 +7,8 @@ const ToDoList = ({
 }) => {
   const listItems = todoItems.map((item) => {
     return (
-      <li className="text-xl w-full justify-between flex">
-        - {item}
+      <li className="text-xl p-1 w-full justify-between flex">
+        - {item}{' '}
         <button
           className="hover:cursor-pointer"
           onClick={() => completeTodo(item)}
@@ -21,8 +21,13 @@ const ToDoList = ({
 
   return (
     <>
-      <div className="flex w-1/2">
-        <ul className="w-full">{listItems}</ul>
+      <div className="flex flex-col gap-5">
+        <div className="flex flex-col">
+          <div>To Do:</div>
+          <div>__________________________________</div>
+        </div>
+        
+        <ul >{listItems}</ul>
       </div>
     </>
   );
