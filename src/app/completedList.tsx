@@ -18,12 +18,19 @@ const CompletedToDos = ({
       </button>
     </li>
   ));
+
+  const clearBtnClicked = () => {
+    if(confirm('Are you sure you want to clear completed tasks?')){
+      emptyCompleted();
+    }
+    else return;
+  }
   return (
     <>
     <div className="flex flex-col gap-5">
       <div className="flex flex-col">
         <div className="flex flex-row justify-between">Completed Tasks:
-          <button className="hover:cursor-pointer" onClick={() => emptyCompleted()}>🗑️</button>
+          <button className="hover:cursor-pointer" onClick={() => clearBtnClicked()}>❌</button>
         </div>
         <div>__________________________________</div>
       </div>
