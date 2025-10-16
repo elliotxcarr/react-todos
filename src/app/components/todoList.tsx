@@ -1,14 +1,16 @@
+import { Task } from "../page";
+
 const ToDoList = ({
   todoItems,
   completeTodo
 }: {
-  todoItems: string[];
+  todoItems: Task[];
   completeTodo: (task) => void;
 }) => {
   const listItems = todoItems.map((item, index) => {
     return (
-      <li key={index} className="text-xl p-1 w-full justify-between flex">
-        - {item}{' '}
+      <li key={index} className="text-lg w-full justify-between flex">
+        - {item.name}{' '}
         <button
           className="hover:cursor-pointer"
           onClick={() => completeTodo(item)}
@@ -21,12 +23,12 @@ const ToDoList = ({
 
   return (
     <>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-2">
         <div className="flex flex-col">
           <div>To Do:</div>
-          <div>__________________________________</div>
+          <div>___________________________</div>
         </div>
-        
+
         <ul >{listItems}</ul>
       </div>
     </>

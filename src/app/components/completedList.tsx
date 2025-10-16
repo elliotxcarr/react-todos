@@ -1,15 +1,17 @@
+import { Task } from "../page";
+
 const CompletedToDos = ({
   completed,
   undoCompleted,
   emptyCompleted
 }: {
-  completed: string[];
-  undoCompleted: (task: string) => void;
+  completed: Task[];
+  undoCompleted: (task: Task) => void;
   emptyCompleted: () => void;
 }) => {
   const completedTasks = completed.map((task) => (
     <li className="text-xl p-1 w-full justify-between flex">
-      - {task}{' '}
+      - {task.name}{' '}
       <button
         className="hover:cursor-pointer"
         onClick={() => undoCompleted(task)}
@@ -33,7 +35,7 @@ const CompletedToDos = ({
         <div className="flex flex-row justify-between">Completed Tasks:
           <button className="hover:cursor-pointer" onClick={() => clearBtnClicked()}>❌</button>
         </div>
-        <div>__________________________________</div>
+        <div>___________________________</div>
       </div>
       <ul >{completedTasks}</ul>
     </div>
