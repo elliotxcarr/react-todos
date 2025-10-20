@@ -1,7 +1,7 @@
 'use client'
 import ToDoList from "./components/todoList";
 import AddToDo from "./components/addToDo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CompletedToDos from "./components/completedList";
 import Calendar from "./components/calendar";
 
@@ -58,6 +58,23 @@ export default function Home() {
     setCompleted([]);
   };
 
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const getUsers =  async () => {
+      try{
+        await fetch('http://localhost:3000/api/users')
+            .then(res => res.json()).then(data => {
+              setUsers(data);
+            });
+      }
+      catch (error){
+        console.error(error)
+      }
+    }
+    getUsers()
+  }, []);
+
   return (
     <div className="flex flex-col mx-15">
       <div className="flex p-5 items-center max-w-screen gap-5 my-5">
@@ -78,6 +95,10 @@ export default function Home() {
             undoCompleted={undoCompleted} 
             emptyCompleted={emptyCompleted}/>
         </div>
+        <ul>
+          {users.map(u => <li>{u.name}</li>)}
+        </ul>
+        
       </div>
     </div>
   );
