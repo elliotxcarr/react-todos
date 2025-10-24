@@ -16,7 +16,7 @@ then
 
  ```npm run dev```
 
-![alt text](<Screenshot 2025-10-15 092622.png>)
+![alt text](image.png)
 
 Created using Next.js
 14/10/2025
