@@ -2,19 +2,19 @@ import { Task } from "../page";
 
 const CompletedToDos = ({
   completed,
-  undoCompleted,
-  emptyCompleted
+  toggleComplete,
+  emptyComplete,
 }: {
   completed: Task[];
-  undoCompleted: (task: Task) => void;
-  emptyCompleted: () => void;
+  toggleComplete: (task: Task) => void;
+  emptyComplete: () => void;
 }) => {
   const completedTasks = completed.map((task) => (
     <li className="text-xl p-1 w-full justify-between flex">
       - {task.name}{' '}
       <button
         className="hover:cursor-pointer"
-        onClick={() => undoCompleted(task)}
+        onClick={() => toggleComplete(task)}
       >
         ↶
       </button>
@@ -24,7 +24,7 @@ const CompletedToDos = ({
   const clearBtnClicked = () => {
     if(completed.length === 0) return;
     if(confirm('Are you sure you want to clear completed tasks?')){
-      emptyCompleted();
+      emptyComplete()
     }
     else return;
   }
