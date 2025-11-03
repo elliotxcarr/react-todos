@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const uri = "mongodb://127.0.0.1:27017/";
+const uri = "mongodb+srv://elliotcarro_db_user:eoBxHAJO5DjBElYt@react-to-dos.38dci9a.mongodb.net/?appName=react-to-dos";
 const client = new MongoClient(uri);
 let clientPromise: Promise<MongoClient>;
 
