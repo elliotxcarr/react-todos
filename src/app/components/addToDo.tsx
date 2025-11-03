@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { Task } from '../page';
 export default function AddToDo({addToDo, days} :{addToDo: (newTask: Task) => void, days:any}) {
 
-  const [task, setTask] = useState({name: '', day: ''});
+  const [task, setTask] = useState<Task>({name: '', day: '', completed: false});
 
   const handleSubmit = () => {
     if(!task) return;
     addToDo(task);
-    setTask({name: '', day: ''});
+    setTask({name: '', day: '', completed: false});
   }
 
   return (
@@ -24,10 +24,11 @@ export default function AddToDo({addToDo, days} :{addToDo: (newTask: Task) => vo
         Select a day
         <select 
         className='text-black placeholder:text-gray-600 bg-gray-300 p-1'
+        key={task._id}
         value={task.day}
         onChange={(e)=> setTask(t => ({...t, day: e.target.value}))}>
           <option value={''}></option>
-          {days.map(d => <option value={d.day}>{d.day}</option>)}
+          {days.map(d => <option key={d.day} value={d.day}>{d.day}</option>)}
         </select>
       </label>
       <button 

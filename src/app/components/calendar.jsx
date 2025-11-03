@@ -1,7 +1,7 @@
 const Calendar = ({days}) => {
   const week = days.map(day => {
     return (
-      <div className="flex w-27 h-27 outline-1 p-1">
+      <div className="flex w-27 h-27 outline-1 p-1" key={day.day}>
         <div className="absolute text-sm ">{day.day}</div>
           <div className=" w-full h-full flex justify-center items-center">
               {day.tasks === 0 ? '' : 
